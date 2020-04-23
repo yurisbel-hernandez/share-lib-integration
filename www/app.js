@@ -17,10 +17,16 @@ requirejs.config({
 // Start loading the main app file. Put all of
 // your application logic in there.
 requirejs(['app/main']);
-requirejs(['react', 'react-dom', './app/reactSample'], function(React, ReactDOM, Sample) {
-    console.dir(Sample);
+requirejs(['react', 'react-dom', 'fantasy', 'bootstrap'], function (React, ReactDOM, Fantasy, Bootstrap) {
+    const CheckBox = Fantasy.CheckBox;
+    const CheckBoxProps = {
+      label: "Check",
+      isChecked: false,
+      onCheckboxChange: () => console.log('Check Change')
+    };
+
 	ReactDOM.render(
-    	React.createElement(Sample.getCheck(), {}, 'Hello, AMD!'),
+        React.createElement(CheckBox , CheckBoxProps, null),
         document.getElementById('root')
     );
 });
